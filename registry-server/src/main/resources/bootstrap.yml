@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: registry-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+      password: 78fa095d-3f4c-48b1-ad50-e24c31d5cf35
+      username: user
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+
