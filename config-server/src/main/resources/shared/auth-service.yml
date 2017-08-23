@@ -1,2 +1,9 @@
 server:
   port: 5000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring
+    driver-class-name: org.postgresql.Driver
+    username: ndhai
+    password: 121212
