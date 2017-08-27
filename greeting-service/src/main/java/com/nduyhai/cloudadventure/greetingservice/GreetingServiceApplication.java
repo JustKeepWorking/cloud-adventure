@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
@@ -16,6 +17,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableOAuth2Client
 @EnableFeignClients
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableHystrix
 public class GreetingServiceApplication {
 
 	public static void main(String[] args) {
@@ -31,13 +33,16 @@ public class GreetingServiceApplication {
             greeting.setQuote("Happy Easter.");
             service.create(greeting);
 
+            greeting.setId(null);
             greeting.setQuote("Get well soon.");
             service.create(greeting);
 
+            greeting.setId(null);
             greeting.setQuote("Good morning!  How are you today?");
             service.create(greeting);
 
 
+            greeting.setId(null);
             greeting.setQuote("Hello");
             service.create(greeting);
         };

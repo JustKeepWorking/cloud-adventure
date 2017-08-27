@@ -5,9 +5,8 @@ import com.nduyhai.cloudadventure.greetingservice.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -19,8 +18,8 @@ public class GreetingService {
 
     public Greeting random() {
         List<Greeting> list = StreamSupport.stream(this.greetingRepository.findAll().spliterator(), false).collect(Collectors.toList());
-        Collections.shuffle(list);
-        return list.get(0);
+        int randomNum = ThreadLocalRandom.current().nextInt(0, list.size());
+        return list.get(randomNum);
     }
 
     public Greeting findOne(Integer id) {

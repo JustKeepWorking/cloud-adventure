@@ -23,4 +23,12 @@ public class GreetingController {
     public void create(@RequestBody Greeting greeting) {
         this.greetingService.create(greeting);
     }
+
+
+    @PreAuthorize("#oauth2.hasScope('server')")
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    public Greeting get(@PathVariable("id") Integer id) {
+        return this.greetingService.findOne(id);
+    }
+
 }
