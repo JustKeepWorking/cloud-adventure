@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: monitoring
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: user
+      password: ConfigServerPassword
+      fail-fast: true
