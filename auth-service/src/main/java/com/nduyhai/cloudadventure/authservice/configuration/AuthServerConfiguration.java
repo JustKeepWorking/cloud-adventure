@@ -1,6 +1,7 @@
 package com.nduyhai.cloudadventure.authservice.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +21,7 @@ public class AuthServerConfiguration  extends AuthorizationServerConfigurerAdapt
     private TokenStore tokenStore = new InMemoryTokenStore();
 
     @Autowired
+    @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -50,13 +52,13 @@ public class AuthServerConfiguration  extends AuthorizationServerConfigurerAdapt
                 .authorizedGrantTypes("refresh_token", "password")
                 .scopes("ui")
                 .and()
-                .withClient("account-service")
-                .secret(env.getProperty("ACCOUNT_SERVICE_PASSWORD"))
+                .withClient("greeting-service")
+                .secret(env.getProperty("GREETING_SERVICE_PASSWORD"))
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server")
                 .and()
-                .withClient("notification-service")
-                .secret(env.getProperty("NOTIFICATION_SERVICE_PASSWORD"))
+                .withClient("monitoring")
+                .secret(env.getProperty("MONITORING_PASSWORD"))
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("server");
     }

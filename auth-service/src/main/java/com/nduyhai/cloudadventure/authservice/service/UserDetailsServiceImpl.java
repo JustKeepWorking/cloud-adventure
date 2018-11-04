@@ -1,6 +1,5 @@
 package com.nduyhai.cloudadventure.authservice.service;
 
-import com.nduyhai.cloudadventure.authservice.domain.User;
 import com.nduyhai.cloudadventure.authservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,10 +19,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = this.repository.findOne(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username);
-        }
-        return user;
+        return this.repository.findById(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 }

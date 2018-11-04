@@ -3,6 +3,8 @@ package com.nduyhai.cloudadventure.greetingservice.controller;
 import com.nduyhai.cloudadventure.greetingservice.domain.Greeting;
 import com.nduyhai.cloudadventure.greetingservice.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +28,11 @@ public class GreetingController {
 
 
     @PreAuthorize("#oauth2.hasScope('server')")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Greeting get(@PathVariable("id") Integer id) {
-        return this.greetingService.findOne(id);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Greeting> get(@PathVariable("id") Integer id) {
+        return this.greetingService.findOne(id)
+                .map(e -> new ResponseEntity<>(e, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
 }

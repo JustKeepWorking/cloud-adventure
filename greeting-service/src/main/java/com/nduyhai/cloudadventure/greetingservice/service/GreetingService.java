@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -22,8 +23,8 @@ public class GreetingService {
         return list.get(randomNum);
     }
 
-    public Greeting findOne(Integer id) {
-        return this.greetingRepository.findOne(id);
+    public Optional<Greeting> findOne(Integer id) {
+        return this.greetingRepository.findById(id);
     }
 
     public void create(Greeting greeting) {
