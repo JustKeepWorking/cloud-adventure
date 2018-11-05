@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.security.Principal;
 
+
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -29,3 +31,4 @@ public class UserController {
         userService.create(user);
     }
 }
+
