@@ -1,14 +1,11 @@
 server:
   port: 5000
-  servlet:
-    context-path: /uaa
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: example
+    url: jdbc:mysql://localhost:3306/devel
+    username: root
+    password: 12345678
   jpa:
     hibernate:
       ddl-auto: update

@@ -1,15 +1,14 @@
 server:
   port: 7000
-  servlet:
-    context-path: /greeting
+
 security:
   oauth2:
     client:
       clientId: greeting-service
       clientSecret: abc123456@#
-      accessTokenUri: http://localhost:5000/uaa/oauth/token
-      userAuthorizationUri: http://localhost:5000/uaa/oauth/authorize
+      accessTokenUri: http://localhost:5000/oauth/token
+      userAuthorizationUri: http://localhost:5000/oauth/authorize
       grant-type: client_credentials
       scope: server
     resource:
-      userInfoUri: http://localhost:5000/uaa/users/current
+      userInfoUri: http://localhost:5000/users/current

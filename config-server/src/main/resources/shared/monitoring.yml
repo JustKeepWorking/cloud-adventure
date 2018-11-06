@@ -1,0 +1,13 @@
+server:
+  port: 9000
+security:
+  oauth2:
+    client:
+      clientId: monitoring
+      clientSecret: abc123456@#
+      accessTokenUri: http://localhost:5000/oauth/token
+      userAuthorizationUri: http://localhost:5000/oauth/authorize
+      grant-type: client_credentials
+      scope: server
+    resource:
+      userInfoUri: http://localhost:5000/users/current
