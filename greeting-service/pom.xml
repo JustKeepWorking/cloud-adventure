@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>greeting-service</name>
-	<description>Geeting service</description>
+	<description>Greeting service</description>
 
 	<parent>
 		<groupId>com.nduyhai</groupId>

@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>registry-server</name>
-    <description>Registy and discovery server</description>
+    <description>Registry and discovery server</description>
 
     <parent>
         <groupId>com.nduyhai</groupId>
